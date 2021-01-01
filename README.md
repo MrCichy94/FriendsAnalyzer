@@ -4,8 +4,8 @@ Facebook Friends Analyzer- desktop application. To compare two archive files, fr
 Project is created with:
 * Java 11
 * Maven
-* Swing
-* Jackson
+* Swing (GUI)
+* Jackson (json object mapper)
 
 ### About the application
 
@@ -17,7 +17,7 @@ Project is created with:
     Second file is file with actual friends. In my case from yesterday (or from future).
 ![mainmenu](./img/img1.png)
 #### 2) Base functionality based on two .json files which are compared to found who removed you from facebook friends, and who you add. 
-    All the data used here is data download from facebook to archive our data from facebook. 
+    All the data used here is a data download from facebook to archive our data from facebook. 
 ![filechooser](./img/img2.png)
 
 #### 3) Function "Who removed you?" and "Who you added?" return the new dialog with results and shows it user. 
@@ -25,7 +25,7 @@ Project is created with:
 ![newfriendsadded](./img/img3.png)
 
 #### 4) If you want change directors files to compare, u should use RESET button. 
-    For more, i try protect the program to strange behavior with block try/catch(exp) communicate user what he should do. 
+    For more, i try protect the program from strange behavior with block try/catch(exp) communicate user what he should do. 
 ![mainmenu](./img/img4.png)
 
 #### 5) Program ready to use for user, looks like here- with icon, with .exe file and .jar in same directory. 
@@ -35,4 +35,4 @@ Project is created with:
 
 
 This is my first java desktop application created fully from documentation of libraries i used. 
-Next time i use Java FX (mvc is more friendly for my). 
+Next time i use Java FX (MVC is more friendly for my). 
