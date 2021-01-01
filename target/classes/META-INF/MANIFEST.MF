@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: FriendsAnalyzer
+Class-Path: jackson-databind-2.12.0.jar jackson-core-2.12.0.jar jackson-
+ annotations-2.12.0.jar
+
