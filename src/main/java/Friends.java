@@ -13,14 +13,4 @@ public class Friends {
         this.friends = friends;
     }
 
-
-    public void printFriends(Friends friends) {
-        for(int i = 0; i<friends.getFriends().size(); i++) {
-            System.out.println("ID: " + friends.getFriends().get(i).getTimestamp()
-                             + " | Name: " + friends.getFriends().get(i).getName());
-        }
-    }
-
-
-
 }
