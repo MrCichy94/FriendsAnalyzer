@@ -46,6 +46,7 @@ public class FriendsAnalyzer extends JFrame {
         this.pack();
 
         baseFriendBtn.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 if (friendsBefore == null) {
                     fc1.setCurrentDirectory(new File("C:\\Users\\user\\Downloads"));
@@ -54,12 +55,12 @@ public class FriendsAnalyzer extends JFrame {
 
                     try {
                         addressToFile1 = fc1.getSelectedFile().toString();
-                        ObjectMapper objectMapper1 = new ObjectMapper();
+                        ObjectMapper objectMapper = new ObjectMapper();
 
                         if (addressToFile1 != null) {
 
                             try {
-                                friendsBefore = objectMapper1.readValue(new File(addressToFile1), Friends.class);
+                                friendsBefore = objectMapper.readValue(new File(addressToFile1), Friends.class);
                             } catch (
                                     IOException ee) {
                                 ee.printStackTrace();
@@ -73,6 +74,7 @@ public class FriendsAnalyzer extends JFrame {
         });
 
         actualFriendBtn.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 if (friendsAfter == null) {
                     fc2.setCurrentDirectory(new File("C:\\Users\\user\\Desktop"));
@@ -82,11 +84,11 @@ public class FriendsAnalyzer extends JFrame {
 
                     try {
                         addressToFile2 = fc2.getSelectedFile().toString();
-                        ObjectMapper objectMapper2 = new ObjectMapper();
+                        ObjectMapper objectMapper = new ObjectMapper();
 
                         if (addressToFile2 != null) {
                             try {
-                                friendsAfter = objectMapper2.readValue(new File(addressToFile2), Friends.class);
+                                friendsAfter = objectMapper.readValue(new File(addressToFile2), Friends.class);
                             } catch (IOException ee) {
                                 ee.printStackTrace();
                             }
