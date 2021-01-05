@@ -35,8 +35,7 @@ public class FriendsAnalyzer extends JFrame {
     private String removedInfo;
     private String addedInfo;
 
-    final JFileChooser fc1 = new JFileChooser();
-    final JFileChooser fc2 = new JFileChooser();
+    final JFileChooser fileChooser = new JFileChooser();
 
     public FriendsAnalyzer(String title) {
         super(title);
@@ -49,12 +48,12 @@ public class FriendsAnalyzer extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (friendsBefore == null) {
-                    fc1.setCurrentDirectory(new File("C:\\Users\\user\\Downloads"));
-                    fc1.setFileFilter(new FileNameExtensionFilter("JSON File", "json"));
-                    fc1.showOpenDialog(baseFriendBtn);
+                    fileChooser.setCurrentDirectory(new File("C:\\Users\\user\\Downloads"));
+                    fileChooser.setFileFilter(new FileNameExtensionFilter("JSON File", "json"));
+                    fileChooser.showOpenDialog(baseFriendBtn);
 
                     try {
-                        addressToFile1 = fc1.getSelectedFile().toString();
+                        addressToFile1 = fileChooser.getSelectedFile().toString();
                         ObjectMapper objectMapper = new ObjectMapper();
 
                         if (addressToFile1 != null) {
@@ -77,13 +76,13 @@ public class FriendsAnalyzer extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (friendsAfter == null) {
-                    fc2.setCurrentDirectory(new File("C:\\Users\\user\\Desktop"));
-                    fc2.setFileFilter(new FileNameExtensionFilter("JSON File", "json"));
-                    fc2.showOpenDialog(actualFriendBtn);
+                    fileChooser.setCurrentDirectory(new File("C:\\Users\\user\\Desktop"));
+                    fileChooser.setFileFilter(new FileNameExtensionFilter("JSON File", "json"));
+                    fileChooser.showOpenDialog(actualFriendBtn);
 
 
                     try {
-                        addressToFile2 = fc2.getSelectedFile().toString();
+                        addressToFile2 = fileChooser.getSelectedFile().toString();
                         ObjectMapper objectMapper = new ObjectMapper();
 
                         if (addressToFile2 != null) {
