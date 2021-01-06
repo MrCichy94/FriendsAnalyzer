@@ -32,8 +32,8 @@ public class FriendsAnalyzer extends JFrame {
     List<Friend> yourNewFriend = new ArrayList<>();
     List<Friend> whoRemovedYou = new ArrayList<>();
 
-    private String removedInfo;
-    private String addedInfo;
+    private String removedInfoWindowContent;
+    private String addedInfoWindowContent;
 
     final JFileChooser fileChooser = new JFileChooser();
 
@@ -57,18 +57,18 @@ public class FriendsAnalyzer extends JFrame {
                         ObjectMapper objectMapper = new ObjectMapper();
 
                         if (addressToFile1 != null) {
-
                             try {
                                 friendsBefore = objectMapper.readValue(new File(addressToFile1), Friends.class);
-                            } catch (
-                                    IOException ee) {
+                            } catch (IOException ee) {
                                 ee.printStackTrace();
                             }
                         }
                     } catch (Exception r) {
                         JOptionPane.showMessageDialog(null, "No file selected!");
                     }
-                } else {JOptionPane.showMessageDialog(null, "Your file has already loaded to the program. If you want to select another one, reset the data!");}
+                } else {
+                    JOptionPane.showMessageDialog(null, "Your file has already loaded to the program. If you want to select another one, reset the data!");
+                }
             }
         });
 
@@ -95,37 +95,43 @@ public class FriendsAnalyzer extends JFrame {
                     } catch (Exception r) {
                         JOptionPane.showMessageDialog(null, "No file selected!");
                     }
-                } else {JOptionPane.showMessageDialog(null, "Your file has already loaded to the program. If you want to select another one, reset the data!");}
+                } else {
+                    JOptionPane.showMessageDialog(null, "Your file has already loaded to the program. If you want to select another one, reset the data!");
+                }
             }
         });
 
         compareRemovedBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(addressToFile1 != null && addressToFile2 != null) {
-                    if(whoRemovedYou.size() == 0) {
+                if (addressToFile1 != null && addressToFile2 != null) {
+                    if (whoRemovedYou.size() == 0) {
                         friendWhoRemovedYouComparer();
                     }
-                    if (removedInfo == null) {
+                    if (removedInfoWindowContent == null) {
                         finishRemovedInfo();
                     }
-                    JOptionPane.showMessageDialog(null, removedInfo);
-                } else {JOptionPane.showMessageDialog(null, "Select files to compare!");}
+                    JOptionPane.showMessageDialog(null, removedInfoWindowContent);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Select files to compare!");
+                }
             }
         });
 
         compareAddBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(addressToFile1 != null && addressToFile2 != null) {
-                    if(yourNewFriend.size() == 0) {
+                if (addressToFile1 != null && addressToFile2 != null) {
+                    if (yourNewFriend.size() == 0) {
                         friendsWhoYouAddComparer();
                     }
-                    if (addedInfo == null) {
+                    if (addedInfoWindowContent == null) {
                         finishAddInfo();
                     }
-                    JOptionPane.showMessageDialog(null, addedInfo);
-                } else {JOptionPane.showMessageDialog(null, "Select files to compare!");}
+                    JOptionPane.showMessageDialog(null, addedInfoWindowContent);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Select files to compare!");
+                }
             }
         });
 
@@ -138,8 +144,8 @@ public class FriendsAnalyzer extends JFrame {
                 friendsAfter = null;
                 yourNewFriend.clear();
                 whoRemovedYou.clear();
-                removedInfo = null;
-                addedInfo = null;
+                removedInfoWindowContent = null;
+                addedInfoWindowContent = null;
                 JOptionPane.showMessageDialog(null, "Program data has been reset!");
             }
         });
@@ -166,27 +172,28 @@ public class FriendsAnalyzer extends JFrame {
 
     public void finishRemovedInfo() {
         polishSignConverter(whoRemovedYou);
-        for(Friend n : whoRemovedYou) {
-            if (removedInfo == null) {
-                removedInfo = n.getName() + "\n";
+        for (Friend n : whoRemovedYou) {
+            if (removedInfoWindowContent == null) {
+                removedInfoWindowContent = n.getName() + "\n";
             } else {
-                removedInfo += n.getName() + "\n";
-            }
-        }
-    }
-    public void finishAddInfo() {
-        polishSignConverter(yourNewFriend);
-        for(Friend n : yourNewFriend) {
-            if (addedInfo == null) {
-                addedInfo = n.getName() + "\n";
-            } else {
-                addedInfo += n.getName() + "\n";
+                removedInfoWindowContent += n.getName() + "\n";
             }
         }
     }
 
-    public void polishSignConverter(List<Friend> friends){
-        for(Friend x : friends) {
+    public void finishAddInfo() {
+        polishSignConverter(yourNewFriend);
+        for (Friend n : yourNewFriend) {
+            if (addedInfoWindowContent == null) {
+                addedInfoWindowContent = n.getName() + "\n";
+            } else {
+                addedInfoWindowContent += n.getName() + "\n";
+            }
+        }
+    }
+
+    public void polishSignConverter(List<Friend> friends) {
+        for (Friend x : friends) {
             String nameToConvert = x.getName();
             writeOutput(nameToConvert);
             String convertedName = readInput();
@@ -200,8 +207,7 @@ public class FriendsAnalyzer extends JFrame {
             Writer out = new OutputStreamWriter(fos, StandardCharsets.ISO_8859_1);
             out.write(str);
             out.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -214,12 +220,11 @@ public class FriendsAnalyzer extends JFrame {
             Reader in = new BufferedReader(isr);
             int ch;
             while ((ch = in.read()) > -1) {
-                buffer.append((char)ch);
+                buffer.append((char) ch);
             }
             in.close();
             return buffer.toString();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
